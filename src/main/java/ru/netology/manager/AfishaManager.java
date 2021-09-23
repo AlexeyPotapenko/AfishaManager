@@ -3,16 +3,10 @@ package ru.netology.manager;
 import ru.netology.domain.Film;
 
 public class AfishaManager {
-    private Film[] films = new Film[]{
-            new Film(1, "f1", "thriller"),
-            new Film(2, "f2", "cartoon"),
-            new Film(3, "f3", "comedy"),
-            new Film(4, "f4", "thriller"),
-            new Film(5, "f5", "horror"),
-            new Film(6, "f6", "cartoon"),
-            new Film(7, "f7", "comedy"),
-    };
+
     private int showFilms = 10;
+    private Film[] films = new Film[]{};
+
 
     public AfishaManager() {
 
@@ -47,11 +41,13 @@ public class AfishaManager {
         }
         Film[] result = new Film[resultLength];
         for (int i = 0; i < resultLength; i++) {
-            int index = resultLength - 1 - i;
+            int index = films.length - 1 - i;
             result[i] = films[index];
         }
         return result;
     }
+
+
 }
 
 

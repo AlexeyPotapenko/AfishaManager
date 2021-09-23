@@ -11,8 +11,27 @@ class AfishaManagerTest {
     void shouldAddFilm() {
 
         AfishaManager afisha = new AfishaManager();
-        Film filmToAdd = new Film(8, "f8", "fantastic");
-        afisha.add(filmToAdd);
+
+        Film first = new Film(1, "f1", "thriller");
+        Film second = new Film(2, "f2", "cartoon");
+        Film third = new Film(3, "f3", "comedy");
+        Film fourth = new Film(4, "f4", "thriller");
+        Film fifth = new Film(5, "f5", "horror");
+        Film sixth = new Film(6, "f6", "cartoon");
+        Film seventh = new Film(7, "f7", "comedy");
+        Film eighth = new Film(8, "f8", "fantastic");
+
+
+        afisha.add(first);
+        afisha.add(second);
+        afisha.add(third);
+        afisha.add(fourth);
+        afisha.add(fifth);
+        afisha.add(sixth);
+        afisha.add(seventh);
+        afisha.add(eighth);
+
+
         Film[] expected;
         expected = new Film[]{
                 new Film(1, "f1", "thriller"),
@@ -28,35 +47,66 @@ class AfishaManagerTest {
         assertArrayEquals(expected, actual);
     }
 
+
     @Test
-    void shouldShowFilmsEmpty() {
-        AfishaManager afisha = new AfishaManager();
+    void shouldShowLastAddedFilmsNoEmpty() {
+        AfishaManager afisha = new AfishaManager(4);
+
+        Film first = new Film(1, "f1", "thriller");
+        Film second = new Film(2, "f2", "cartoon");
+        Film third = new Film(3, "f3", "comedy");
+        Film fourth = new Film(4, "f4", "thriller");
+        Film fifth = new Film(5, "f5", "horror");
+        Film sixth = new Film(6, "f6", "cartoon");
+        Film seventh = new Film(7, "f7", "comedy");
+        Film eighth = new Film(8, "f8", "fantastic");
+
+
+        afisha.add(first);
+        afisha.add(second);
+        afisha.add(third);
+        afisha.add(fourth);
+        afisha.add(fifth);
+        afisha.add(sixth);
+        afisha.add(seventh);
+        afisha.add(eighth);
+
         afisha.getLast10();
+
         Film[] expected = new Film[]{
-                new Film(7, "Number One", "comedy"),
-                new Film(6, "Trolls", "cartoon"),
-                new Film(5, "The Invisible Man", "horror"),
-                new Film(4, "The Gentlemen", "thriller"),
-                new Film(3, "Hotel Belgrad", "comedy"),
-                new Film(2, "Onward", "cartoon"),
-                new Film(1, "Bloodshot", "thriller"),
+
+                new Film(8, "f8", "fantastic"),
+                new Film(7, "f7", "comedy"),
+                new Film(6, "f6", "cartoon"),
+                new Film(5, "f5", "horror")
         };
+
+
         Film[] actual = afisha.getLast10();
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void shouldShowFilms() {
-        AfishaManager afisha = new AfishaManager(5);
+    void shouldShowLastAddedFilmsEmpty() {
+        AfishaManager afisha = new AfishaManager();
+
+        Film first = new Film(5, "f5", "horror");
+        Film second = new Film(6, "f6", "cartoon");
+        Film third = new Film(2, "f2", "cartoon");
+
+        afisha.add(first);
+        afisha.add(second);
+        afisha.add(third);
+
         afisha.getLast10();
         Film[] expected = new Film[]{
-                new Film(5, "The Invisible Man", "horror"),
-                new Film(4, "The Gentlemen", "thriller"),
-                new Film(3, "Hotel Belgrad", "comedy"),
-                new Film(2, "Onward", "cartoon"),
-                new Film(1, "Bloodshot", "thriller"),
+                new Film(2, "f2", "cartoon"),
+                new Film(6, "f6", "cartoon"),
+                new Film(5, "f5", "horror")
         };
         Film[] actual = afisha.getLast10();
         assertArrayEquals(expected, actual);
     }
+
+
 }
