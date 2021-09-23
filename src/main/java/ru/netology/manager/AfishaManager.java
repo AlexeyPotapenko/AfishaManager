@@ -7,9 +7,7 @@ public class AfishaManager {
     private int showFilms = 10;
     private Film[] films = new Film[]{};
 
-
     public AfishaManager() {
-
     }
 
     public AfishaManager(int showFilms) {
@@ -29,8 +27,6 @@ public class AfishaManager {
     public Film[] findAll() {
         return films; }
 
-
-
     public Film[] getLast10() {
         Film[] films = findAll();
         int resultLength;
@@ -46,7 +42,6 @@ public class AfishaManager {
         }
         return result;
     }
-
 
 }
 
